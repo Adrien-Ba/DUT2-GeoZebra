@@ -16,7 +16,7 @@ public class Main extends Application {
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.setTitle("GéoZebra");
+		stage.setTitle("GeoZebra");
 		stage.setHeight(720);
 		stage.setWidth(1280);
 		stage.show();
