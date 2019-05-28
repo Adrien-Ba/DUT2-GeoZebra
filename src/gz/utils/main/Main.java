@@ -6,15 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("rendu.fxml"));
-		Parent root = loader.load();
-		
-		Scene s = new Scene(root);
+		Parent root = FXMLLoader.load(getClass().getResource("rendu.fxml"));
+
+		Scene s = new Scene(root, 300, 600);
+		primaryStage.setTitle("test");
 		primaryStage.setScene(s);
 		primaryStage.show();
 	}
@@ -24,3 +23,4 @@ public class Main extends Application{
 	}
 
 }
+
