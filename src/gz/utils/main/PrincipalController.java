@@ -99,8 +99,14 @@ public class PrincipalController {
     }
 
     @FXML
-    void btnValiderRotationListener(MouseEvent event) {
-
+    void btnValiderRotationListener(MouseEvent event) throws LibraryException {
+    	double degre = Double.parseDouble(txtFieldDegresRotation.getText());
+    	double x = Double.parseDouble(txtFieldXRotation.getText());
+    	double y = Double.parseDouble(txtFieldYRotation.getText());
+    	lesRotations.put(txtFieldNomRptation.getText(), new Rotation(degre, x, y));
+    	
+    	composition.add(new Rotation(degre, x, y));;
+    	ajoutAfficher();
     }
 
     @FXML
@@ -117,6 +123,7 @@ public class PrincipalController {
     public void initialize() {
     	composition = new Composition();
     	panePrincipal.getChildren().add(composition.getGrille(panePrincipal));
+    	rotaDefaut();
     	afficher();
     }
     
@@ -130,7 +137,13 @@ public class PrincipalController {
     
     
     
-    
+    //DEFAUT
+    public void rotaDefaut() {
+		txtFieldNomRptation.setText("rotation_"+(lesRotations.size()+1));
+		txtFieldXRotation.setText("1");
+		txtFieldYRotation.setText("1");
+		txtFieldDegresRotation.setText("90");
+	}
     
     
     
