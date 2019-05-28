@@ -9,13 +9,17 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("rendu.fxml"));
-
-		Scene s = new Scene(root, 300, 600);
-		primaryStage.setTitle("test");
-		primaryStage.setScene(s);
-		primaryStage.show();
+	public void start(Stage stage) throws Exception {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/gz/ressources/principal.fxml"));
+		
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("GéoZebra");
+		stage.setHeight(720);
+		stage.setWidth(1280);
+		stage.show();
 	}
 	
 	public static void main(String[] args) {
