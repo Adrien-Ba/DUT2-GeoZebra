@@ -21,19 +21,9 @@
             <HBox>
                <children>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnReculer" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnReculerListener" prefHeight="20.0" prefWidth="20.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="5.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
                   <Button fx:id="btnPlay" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnPlayListener" prefHeight="30.0" prefWidth="30.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnAvancer" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnAvancerListener" prefHeight="20.0" prefWidth="20.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="5.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
