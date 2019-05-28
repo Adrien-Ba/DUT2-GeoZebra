@@ -51,7 +51,7 @@
       <Pane fx:id="panePrincipal" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <Accordion prefHeight="358.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <Accordion prefHeight="358.0" prefWidth="220.0" BorderPane.alignment="CENTER">
         <panes>
           <TitledPane animated="false" text="Translation">
                <content>
