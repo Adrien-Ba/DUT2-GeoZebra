@@ -13,11 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import transforms.Composition;
 import transforms.LibraryException;
 import transforms.elementaires.Homothetie;
 import transforms.elementaires.Rotation;
+import transforms.elementaires.Transformation;
 import transforms.elementaires.Translation;
+import transforms.mobile.Motif;
 
 public class PrincipalController {
 	//ATTRIBUTS
@@ -26,6 +29,7 @@ public class PrincipalController {
 	private HashMap<String,Rotation> lesRotations = new HashMap<String,Rotation>();
 	private HashMap<String,Translation> lesTranslations = new HashMap<String,Translation>();
 	private HashMap<String,Homothetie> lesHomothetie = new HashMap<String,Homothetie>();
+	private ArrayList<Transformation> lesTransformations = new ArrayList<Transformation>();
 
 	private List<Node> allNodes;
 	ArrayList<Boolean> display = new ArrayList<>(Arrays.asList(true));
@@ -85,7 +89,21 @@ public class PrincipalController {
 
     @FXML
     void btnPlayListener(MouseEvent event) {
-
+        final int firstStep = 0;
+        final int lastStep = lesTransformations.size();
+        try {
+            final Motif mobile = composition.getStep(firstStep);
+            mobile.setStroke(Color.BLUE);
+            panePrincipal.getChildren().add(mobile.toGroup());
+            composition.animate(
+                    mobile.toGroup(),
+                    firstStep,
+                    lastStep,
+                    e -> panePrincipal.getChildren().remove(mobile.toGroup())
+            ).play();    // Animation entre les étapes firstStep et lastStep
+        } catch (LibraryException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -94,8 +112,15 @@ public class PrincipalController {
     }
 
     @FXML
-    void btnValiderHomothetieListener(MouseEvent event) {
-
+    void btnValiderHomothetieListener(MouseEvent event) throws LibraryException {
+    	double rapport = Double.parseDouble(txtFieldRapportHomothetie.getText());
+    	double x = Double.parseDouble(txtFieldXHomothetie.getText());
+    	double y = Double.parseDouble(txtFieldYHomothetie.getText());
+    	lesHomothetie.put(txtFieldNomHomothetie.getText(), new Homothetie(rapport, x, y));
+    	lesTransformations.add(new Homothetie(rapport, x, y));
+    	composition.add(new Homothetie(rapport, x, y));
+    	setHomotetieDefaut();
+    	ajoutAfficher();
     }
 
     @FXML
@@ -104,8 +129,9 @@ public class PrincipalController {
     	double x = Double.parseDouble(txtFieldXRotation.getText());
     	double y = Double.parseDouble(txtFieldYRotation.getText());
     	lesRotations.put(txtFieldNomRptation.getText(), new Rotation(degre, x, y));
-    	
+    	lesTransformations.add(new Rotation(degre, x, y));
     	composition.add(new Rotation(degre, x, y));;
+    	setRotationDefaut();
     	ajoutAfficher();
     }
 
@@ -114,16 +140,44 @@ public class PrincipalController {
     	double x = Double.parseDouble(txtFieldXTranslation.getText());
     	double y = Double.parseDouble(txtFieldYTranslation.getText());
     	lesTranslations.put(txtFieldNomTranslation.getText(), new Translation(x, y));
-    	//
+    	lesTransformations.add(new Translation(x, y));
     	composition.add(new Translation(x, y));
+    	setTranslationDefaut();
     	ajoutAfficher();
     }
+    
+    //ANIMATION
+    public void animer() {
+    	int min = 0;
+    	int max = lesTranslations.size();
+    	try {
+    		final Motif mobile = composition.getStep(min);
+    		mobile.setStroke(Color.BLUE);
+    		panePrincipal.getChildren().add(mobile.toGroup());
+			composition.animate(
+					mobile.toGroup(),
+					min,
+					max,
+					e -> panePrincipal.getChildren().remove(mobile.toGroup())
+					).play();    
+		} catch (LibraryException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    
+    
+    
+    
+    
     
     //METHODES
     public void initialize() {
     	composition = new Composition();
     	panePrincipal.getChildren().add(composition.getGrille(panePrincipal));
-    	rotaDefaut();
+    	setRotationDefaut();
+    	setTranslationDefaut();
+    	setHomotetieDefaut();
     	afficher();
     }
     
@@ -138,12 +192,25 @@ public class PrincipalController {
     
     
     //DEFAUT
-    public void rotaDefaut() {
-		txtFieldNomRptation.setText("rotation_"+(lesRotations.size()+1));
+    public void setRotationDefaut() {
+		txtFieldNomRptation.setText("Rotation " + (lesRotations.size()+1));
 		txtFieldXRotation.setText("1");
 		txtFieldYRotation.setText("1");
 		txtFieldDegresRotation.setText("90");
 	}
+    
+    public void setTranslationDefaut() {
+    	txtFieldNomTranslation.setText("Translation " + (lesTranslations.size()+1));
+    	txtFieldXTranslation.setText("1");
+    	txtFieldYTranslation.setText("1");
+    }
+    
+    public void setHomotetieDefaut() {
+    	txtFieldNomHomothetie.setText("Homotetie " + (lesHomothetie.size()+1));
+    	txtFieldXHomothetie.setText("1");
+    	txtFieldYHomothetie.setText("2");
+    	txtFieldRapportHomothetie.setText("2");
+    }
     
     
     
