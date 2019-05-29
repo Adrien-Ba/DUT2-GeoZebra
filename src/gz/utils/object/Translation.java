@@ -25,4 +25,8 @@ public class Translation extends Transformation {
 		return y;
 	}
 	
+	public String toString() {
+		return this.nom + " : x = " + this.x + ", y = " + this.y;
+	}
+	
 }

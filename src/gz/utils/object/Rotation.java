@@ -31,4 +31,8 @@ public class Rotation extends Transformation {
 		return deg;
 	}
 	
+	public String toString() {
+		return this.nom + " : x = " + this.x + ", y = " + this.y + ", degre = " + this.deg;
+	}
+	
 }

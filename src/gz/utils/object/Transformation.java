@@ -3,6 +3,8 @@ package gz.utils.object;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.layout.VBox;
+
 public class Transformation {
 
 	private Map<String, Transformation> lesTransformations = new HashMap<String, Transformation>();
@@ -17,6 +19,10 @@ public class Transformation {
 	
 	public void addTransformation(Homothetie h) {
 		this.lesTransformations.put(h.getNom(), h);
+	}
+	
+	public void majHistorique() {
+		
 	}
 	
 }

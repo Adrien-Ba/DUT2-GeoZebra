@@ -31,4 +31,8 @@ public class Homothetie extends Transformation {
 		return rap;
 	}
 	
+	public String toString() {
+		return this.nom + " : x = " + this.x + ", y = " + this.y + ", rapport = " + this.rap;
+	}
+	
 }

@@ -26,21 +26,19 @@ public class PrincipalController {
 	//ATTRIBUTS
 	private Composition composition;
 	
-	private HashMap<String,Rotation> lesRotations = new HashMap<String,Rotation>();
-	private HashMap<String,Translation> lesTranslations = new HashMap<String,Translation>();
-	private HashMap<String,Homothetie> lesHomothetie = new HashMap<String,Homothetie>();
-	private ArrayList<Transformation> lesTransformations = new ArrayList<Transformation>();
+	private static HashMap<String,Rotation> lesRotations = new HashMap<String,Rotation>();
+	private static HashMap<String,Translation> lesTranslations = new HashMap<String,Translation>();
+	private static HashMap<String,Homothetie> lesHomothetie = new HashMap<String,Homothetie>();
+	private static ArrayList<Transformation> lesTransformations = new ArrayList<Transformation>();
 
 	private List<Node> allNodes;
-	ArrayList<Boolean> display = new ArrayList<>(Arrays.asList(true));
+	private static ArrayList<Boolean> display = new ArrayList<>(Arrays.asList(true));
 	
+	private static Label leLblInspector;
+	private static VBox laVBoxHistorique;
 	
-    @FXML
-    private Button btnReculer;
     @FXML
     private Button btnPlay;
-    @FXML
-    private Button btnAvancer;
     @FXML
     private VBox vBoxHistorique;
     @FXML
@@ -83,11 +81,6 @@ public class PrincipalController {
     private Label lblInspector;
 
     @FXML
-    void btnAvancerListener(MouseEvent event) {
-
-    }
-
-    @FXML
     void btnPlayListener(MouseEvent event) {
         final int firstStep = 0;
         final int lastStep = lesTransformations.size();
@@ -100,15 +93,10 @@ public class PrincipalController {
                     firstStep,
                     lastStep,
                     e -> panePrincipal.getChildren().remove(mobile.toGroup())
-            ).play();    // Animation entre les étapes firstStep et lastStep
+            ).play();    // Animation entre les ï¿½tapes firstStep et lastStep
         } catch (LibraryException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void btnReculerListener(MouseEvent event) {
-
     }
 
     @FXML
@@ -116,9 +104,11 @@ public class PrincipalController {
     	double rapport = Double.parseDouble(txtFieldRapportHomothetie.getText());
     	double x = Double.parseDouble(txtFieldXHomothetie.getText());
     	double y = Double.parseDouble(txtFieldYHomothetie.getText());
-    	lesHomothetie.put(txtFieldNomHomothetie.getText(), new Homothetie(rapport, x, y));
-    	lesTransformations.add(new Homothetie(rapport, x, y));
-    	composition.add(new Homothetie(rapport, x, y));
+    	Homothetie h = new Homothetie(rapport, x, y);
+    	lesHomothetie.put(txtFieldNomHomothetie.getText(), h);
+    	lesTransformations.add(h);
+    	composition.add(h);
+    	Main.addHistorique(txtFieldNomHomothetie.getText(), h);
     	setHomotetieDefaut();
     	ajoutAfficher();
     }
@@ -128,9 +118,11 @@ public class PrincipalController {
     	double degre = Double.parseDouble(txtFieldDegresRotation.getText());
     	double x = Double.parseDouble(txtFieldXRotation.getText());
     	double y = Double.parseDouble(txtFieldYRotation.getText());
-    	lesRotations.put(txtFieldNomRptation.getText(), new Rotation(degre, x, y));
-    	lesTransformations.add(new Rotation(degre, x, y));
-    	composition.add(new Rotation(degre, x, y));;
+    	Rotation r = new Rotation(degre, x, y);
+    	lesRotations.put(txtFieldNomRptation.getText(), r);
+    	lesTransformations.add(r);
+    	composition.add(r);
+    	Main.addHistorique(txtFieldNomRptation.getText(), r);
     	setRotationDefaut();
     	ajoutAfficher();
     }
@@ -139,9 +131,11 @@ public class PrincipalController {
     void btnValiderTranslationListener(MouseEvent event) throws LibraryException {
     	double x = Double.parseDouble(txtFieldXTranslation.getText());
     	double y = Double.parseDouble(txtFieldYTranslation.getText());
-    	lesTranslations.put(txtFieldNomTranslation.getText(), new Translation(x, y));
-    	lesTransformations.add(new Translation(x, y));
-    	composition.add(new Translation(x, y));
+    	Translation t = new Translation(x, y);
+    	lesTranslations.put(txtFieldNomTranslation.getText(), t);
+    	lesTransformations.add(t);
+    	composition.add(t);
+    	Main.addHistorique(txtFieldNomTranslation.getText(), t);
     	setTranslationDefaut();
     	ajoutAfficher();
     }
@@ -164,15 +158,10 @@ public class PrincipalController {
 			e.printStackTrace();
 		}
     }
-    
-    
-    
-    
-    
-    
-    
+        
     //METHODES
     public void initialize() {
+    	leLblInspector = lblInspector;
     	composition = new Composition();
     	panePrincipal.getChildren().add(composition.getGrille(panePrincipal));
     	setRotationDefaut();
@@ -180,17 +169,7 @@ public class PrincipalController {
     	setHomotetieDefaut();
     	afficher();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     //DEFAUT
     public void setRotationDefaut() {
 		txtFieldNomRptation.setText("Rotation " + (lesRotations.size()+1));
@@ -212,14 +191,6 @@ public class PrincipalController {
     	txtFieldRapportHomothetie.setText("2");
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     //AFFICHAGES
     public void afficher() {
     	if (allNodes == null) {
@@ -238,6 +209,32 @@ public class PrincipalController {
     	panePrincipal.getChildren().addAll(allNodes);
     }
     
+    public static Label getLabelInspector() {
+    	return leLblInspector;
+    }
     
+    public static VBox getLaVBoxHistorique() {
+    	return laVBoxHistorique;
+    }
+    
+    public static HashMap<String, Translation> getLesTranslations() {
+		return lesTranslations;
+	}
+    
+    public static HashMap<String, Rotation> getLesRotations() {
+		return lesRotations;
+	}
+    
+    public static HashMap<String, Homothetie> getLesHomothetie() {
+		return lesHomothetie;
+	}
+    
+    public static ArrayList<Transformation> getLesTransformations() {
+		return lesTransformations;
+	}
+    
+    public static ArrayList<Boolean> getDisplay() {
+		return display;
+	}
 
 }
