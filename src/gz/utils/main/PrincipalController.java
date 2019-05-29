@@ -135,6 +135,18 @@ public class PrincipalController {
 		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 		cbItem.setSelected(true);
+		cbItem.setOnMouseReleased(e -> {
+			if (cbItem.isSelected()) {
+				display.set(lesTransformations.indexOf(lesHomothetie.get(lblNom.getText())) + 1, true);
+			} else {
+				display.set(lesTransformations.indexOf(lesHomothetie.get(lblNom.getText())) + 1, false);
+			}
+			try {
+				majAffichage();
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
+		});
 
 		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
 		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
@@ -182,6 +194,18 @@ public class PrincipalController {
 		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 		cbItem.setSelected(true);
+		cbItem.setOnMouseReleased(e -> {
+			if (cbItem.isSelected()) {
+				display.set(lesTransformations.indexOf(lesRotations.get(lblNom.getText())) + 1, true);
+			} else {
+				display.set(lesTransformations.indexOf(lesRotations.get(lblNom.getText())) + 1, false);
+			}
+			try {
+				majAffichage();
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
+		});
 
 		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
 		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
@@ -228,6 +252,18 @@ public class PrincipalController {
 		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 		cbItem.setSelected(true);
+		cbItem.setOnMouseReleased(e -> {
+			if (cbItem.isSelected()) {
+				display.set(lesTransformations.indexOf(lesTranslations.get(lblNom.getText())) + 1, true);
+			} else {
+				display.set(lesTransformations.indexOf(lesTranslations.get(lblNom.getText())) + 1, false);
+			}
+			try {
+				majAffichage();
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
+		});
 
 		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
 		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
@@ -309,6 +345,14 @@ public class PrincipalController {
     public void ajoutAfficher() throws LibraryException {
     	display.add(true);
     	allNodes = composition.draw(display);
+    	panePrincipal.getChildren().addAll(allNodes);
+    }
+    
+    public void majAffichage() throws LibraryException {
+    	allNodes.clear();
+    	allNodes = composition.draw(display);
+    	panePrincipal.getChildren().clear();
+    	panePrincipal.getChildren().add(composition.getGrille(panePrincipal));
     	panePrincipal.getChildren().addAll(allNodes);
     }
     
