@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import transforms.Composition;
@@ -99,7 +103,8 @@ public class PrincipalController {
         }
     }
 
-    @FXML
+    @SuppressWarnings("static-access")
+	@FXML
     void btnValiderHomothetieListener(MouseEvent event) throws LibraryException {
     	double rapport = Double.parseDouble(txtFieldRapportHomothetie.getText());
     	double x = Double.parseDouble(txtFieldXHomothetie.getText());
@@ -108,12 +113,45 @@ public class PrincipalController {
     	lesHomothetie.put(txtFieldNomHomothetie.getText(), h);
     	lesTransformations.add(h);
     	composition.add(h);
-    	Main.addHistorique(txtFieldNomHomothetie.getText(), h);
+    	
+    	VBox vboxItem = new VBox();
+		HBox hboxNom = new HBox();
+		HBox hboxCheck = new HBox();
+		Label lbl1 = new Label("");
+		Label lblNom = new Label(txtFieldNomHomothetie.getText());
+		Label lbl2 = new Label("");
+		Label lbl3 = new Label("");
+		CheckBox cbItem = new CheckBox("Visible");
+		Label lbl4 = new Label("");
+
+		HBox.setHgrow(lbl1, Priority.ALWAYS);
+		HBox.setHgrow(lbl2, Priority.ALWAYS);
+		HBox.setHgrow(lbl3, Priority.ALWAYS);
+		HBox.setHgrow(lbl4, Priority.ALWAYS);
+
+		lbl1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl3.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+		cbItem.setSelected(true);
+
+		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
+		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
+		vboxItem.getChildren().addAll(hboxNom, hboxCheck);
+		
+		vboxItem.setMargin(vboxItem, new Insets(5.0));
+		vboxItem.setPadding(new Insets(2, 0, 5, 0));
+		vboxItem.getStyleClass().add("vbox");
+		
+		vBoxHistorique.getChildren().add(vboxItem);
+		
     	setHomotetieDefaut();
     	ajoutAfficher();
     }
 
-    @FXML
+    @SuppressWarnings("static-access")
+	@FXML
     void btnValiderRotationListener(MouseEvent event) throws LibraryException {
     	double degre = Double.parseDouble(txtFieldDegresRotation.getText());
     	double x = Double.parseDouble(txtFieldXRotation.getText());
@@ -122,12 +160,45 @@ public class PrincipalController {
     	lesRotations.put(txtFieldNomRptation.getText(), r);
     	lesTransformations.add(r);
     	composition.add(r);
-    	Main.addHistorique(txtFieldNomRptation.getText(), r);
+    	
+    	VBox vboxItem = new VBox();
+		HBox hboxNom = new HBox();
+		HBox hboxCheck = new HBox();
+		Label lbl1 = new Label("");
+		Label lblNom = new Label(txtFieldNomRptation.getText());
+		Label lbl2 = new Label("");
+		Label lbl3 = new Label("");
+		CheckBox cbItem = new CheckBox("Visible");
+		Label lbl4 = new Label("");
+
+		HBox.setHgrow(lbl1, Priority.ALWAYS);
+		HBox.setHgrow(lbl2, Priority.ALWAYS);
+		HBox.setHgrow(lbl3, Priority.ALWAYS);
+		HBox.setHgrow(lbl4, Priority.ALWAYS);
+
+		lbl1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl3.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+		cbItem.setSelected(true);
+
+		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
+		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
+		vboxItem.getChildren().addAll(hboxNom, hboxCheck);
+		
+		vboxItem.setMargin(vboxItem, new Insets(5.0));
+		vboxItem.setPadding(new Insets(2, 0, 5, 0));
+		vboxItem.getStyleClass().add("vbox");
+		
+		vBoxHistorique.getChildren().add(vboxItem);
+		
     	setRotationDefaut();
     	ajoutAfficher();
     }
 
-    @FXML
+    @SuppressWarnings("static-access")
+	@FXML
     void btnValiderTranslationListener(MouseEvent event) throws LibraryException {
     	double x = Double.parseDouble(txtFieldXTranslation.getText());
     	double y = Double.parseDouble(txtFieldYTranslation.getText());
@@ -135,7 +206,39 @@ public class PrincipalController {
     	lesTranslations.put(txtFieldNomTranslation.getText(), t);
     	lesTransformations.add(t);
     	composition.add(t);
-    	Main.addHistorique(txtFieldNomTranslation.getText(), t);
+    	
+    	VBox vboxItem = new VBox();
+		HBox hboxNom = new HBox();
+		HBox hboxCheck = new HBox();
+		Label lbl1 = new Label("");
+		Label lblNom = new Label(txtFieldNomTranslation.getText());
+		Label lbl2 = new Label("");
+		Label lbl3 = new Label("");
+		CheckBox cbItem = new CheckBox("Visible");
+		Label lbl4 = new Label("");
+
+		HBox.setHgrow(lbl1, Priority.ALWAYS);
+		HBox.setHgrow(lbl2, Priority.ALWAYS);
+		HBox.setHgrow(lbl3, Priority.ALWAYS);
+		HBox.setHgrow(lbl4, Priority.ALWAYS);
+
+		lbl1.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl3.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		lbl4.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+		cbItem.setSelected(true);
+
+		hboxNom.getChildren().addAll(lbl1, lblNom, lbl2);
+		hboxCheck.getChildren().addAll(lbl3, cbItem, lbl4);
+		vboxItem.getChildren().addAll(hboxNom, hboxCheck);
+		
+		vboxItem.setMargin(vboxItem, new Insets(5.0));
+		vboxItem.setPadding(new Insets(2, 0, 5, 0));
+		vboxItem.getStyleClass().add("vbox");
+		
+		vBoxHistorique.getChildren().add(vboxItem);
+		
     	setTranslationDefaut();
     	ajoutAfficher();
     }
