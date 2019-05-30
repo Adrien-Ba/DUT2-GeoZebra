@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -40,6 +41,8 @@ public class PrincipalController {
 	
 	private static Label leLblInspector;
 	private static VBox laVBoxHistorique;
+	
+	private static double zoom = 40;
 	
     @FXML
     private Button btnPlay;
@@ -83,6 +86,10 @@ public class PrincipalController {
     private Button btnValiderHomothetie;
     @FXML
     private Label lblInspector;
+    @FXML
+    private Button btnPlus;
+    @FXML
+    private Button btnMoins;
 
     @FXML
     void btnPlayListener(MouseEvent event) {
@@ -366,6 +373,8 @@ public class PrincipalController {
     	panePrincipal.getChildren().addAll(allNodes);
     }
     
+    
+    //GETTERS 
     public static Label getLabelInspector() {
     	return leLblInspector;
     }
@@ -393,5 +402,24 @@ public class PrincipalController {
     public static ArrayList<Boolean> getDisplay() {
 		return display;
 	}
+    
+    //ZOOM
+    @FXML
+    void btnMoinsPressed(MouseEvent event) {
+    	if(zoom !=5) {
+    		zoom = zoom - 5;
+    	}
+    	composition.setZoom(zoom, 400.0, 400.0);
+    }
+    
+    @FXML
+    void ptnPlusPressed(MouseEvent event) {
+    	if(zoom !=100) {
+    		zoom = zoom + 5;
+    	}
+    	composition.setZoom(zoom, 400.0, 400.0);
+    }
+    
+    
 
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -13,25 +18,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gz.utils.main.PrincipalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gz.utils.main.PrincipalController">
    <left>
       <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnPlay" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnPlayListener" prefHeight="30.0" prefWidth="30.0" text="&gt;">
+                  <Button fx:id="btnPlay" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnPlayListener" prefHeight="30.0" prefWidth="30.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@PlayButton.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+                  <Button fx:id="btnMoins" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnMoinsPressed" prefHeight="30.0" prefWidth="30.0" text="-">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+                  <Button fx:id="btnPlus" mnemonicParsing="false" onMousePressed="#ptnPlusPressed" prefHeight="30.0" prefWidth="30.0" text="+">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
