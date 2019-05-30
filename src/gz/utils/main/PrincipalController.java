@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -163,7 +162,11 @@ public class PrincipalController {
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
 		vboxItem.setOnMouseReleased(e -> {
-			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", rapport = " + rapport);
+			try {
+				leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", rapport = " + rapport + "\t\t matrice : " + Arrays.deepToString(composition.getAtomicMatrix(lesTransformations.indexOf(lesHomothetie.get(lblNom.getText())))));
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
 		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
@@ -225,7 +228,11 @@ public class PrincipalController {
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
 		vboxItem.setOnMouseReleased(e -> {
-			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", degre = " + degre);
+			try {
+				leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", degre = " + degre + "\t\t matrice : " + Arrays.deepToString(composition.getAtomicMatrix(lesTransformations.indexOf(lesRotations.get(lblNom.getText())))));
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
 		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
@@ -286,7 +293,11 @@ public class PrincipalController {
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
 		vboxItem.setOnMouseReleased(e -> {
-			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y);
+			try {
+				leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + "\t\t\t\t matrice : " + Arrays.deepToString(composition.getAtomicMatrix(lesTransformations.indexOf(lesTranslations.get(lblNom.getText())))));
+			} catch (LibraryException e1) {
+				e1.printStackTrace();
+			}
 		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
