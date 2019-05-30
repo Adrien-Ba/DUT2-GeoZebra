@@ -27,9 +27,9 @@
             <HBox>
                <children>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnPlay" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnPlayListener" prefHeight="30.0" prefWidth="30.0">
+                  <Button fx:id="btnPlay" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#btnPlayListener" prefHeight="30.0" prefWidth="30.0">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets />
                      </HBox.margin>
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
@@ -40,22 +40,25 @@
                      </graphic>
                   </Button>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnMoins" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMousePressed="#btnMoinsPressed" prefHeight="30.0" prefWidth="30.0" text="-">
+                  <Button fx:id="btnMoins" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#btnMoinsPressed" prefHeight="30.0" prefWidth="30.0" text="-">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnPlus" mnemonicParsing="false" onMousePressed="#ptnPlusPressed" prefHeight="30.0" prefWidth="30.0" text="+">
+                  <Button fx:id="btnPlus" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#ptnPlusPressed" prefHeight="30.0" prefWidth="30.0" text="+">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Button>
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                   <Separator orientation="VERTICAL" />
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </HBox>
             <Separator />
-            <ScrollPane VBox.vgrow="ALWAYS">
+            <ScrollPane prefWidth="150.0" VBox.vgrow="ALWAYS">
                <content>
                   <VBox fx:id="vBoxHistorique" prefWidth="130.0" />
                </content>
