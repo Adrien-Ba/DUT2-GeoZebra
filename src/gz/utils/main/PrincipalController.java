@@ -155,6 +155,9 @@ public class PrincipalController {
 		vboxItem.setMargin(vboxItem, new Insets(5.0));
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
+		vboxItem.setOnMouseReleased(e -> {
+			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", rapport = " + rapport);
+		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
 		
@@ -214,6 +217,9 @@ public class PrincipalController {
 		vboxItem.setMargin(vboxItem, new Insets(5.0));
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
+		vboxItem.setOnMouseReleased(e -> {
+			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y + ", degre = " + degre);
+		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
 		
@@ -272,6 +278,9 @@ public class PrincipalController {
 		vboxItem.setMargin(vboxItem, new Insets(5.0));
 		vboxItem.setPadding(new Insets(2, 0, 5, 0));
 		vboxItem.getStyleClass().add("vbox");
+		vboxItem.setOnMouseReleased(e -> {
+			leLblInspector.setText(lblNom.getText() + " : x = " + x + ", y = " + y);
+		});
 		
 		vBoxHistorique.getChildren().add(vboxItem);
 		
@@ -300,6 +309,7 @@ public class PrincipalController {
         
     //METHODES
     public void initialize() {
+    	lblInspector.setText("");
     	leLblInspector = lblInspector;
     	composition = new Composition();
     	panePrincipal.getChildren().add(composition.getGrille(panePrincipal));
