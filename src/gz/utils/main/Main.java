@@ -12,8 +12,8 @@ public class Main extends Application {
 	public void start(Stage stage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/gz/ressources/principal.fxml"));
-
 		Parent root = loader.load();
+		
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add("gz/ressources/style.css");
 		stage.setScene(scene);
