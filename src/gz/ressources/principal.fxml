@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -15,7 +20,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gz.utils.main.PrincipalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gz.utils.main.PrincipalController">
    <left>
       <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
@@ -96,7 +101,7 @@
                                           <Insets top="4.0" />
                                        </padding>
                                     </Label>
-                                    <TextField fx:id="txtFieldNomTranslation" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="85.0" />
+                                    <TextField fx:id="txtFieldNomTranslation" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="120.0" />
                                  </children>
                               </HBox>
                               <Label text="Coordonées :">
@@ -169,7 +174,7 @@
                                           <Insets top="4.0" />
                                        </padding>
                                     </Label>
-                                    <TextField fx:id="txtFieldNomRptation" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="85.0" />
+                                    <TextField fx:id="txtFieldNomRptation" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="120.0" />
                                  </children>
                               </HBox>
                               <Label text="Centre :">
@@ -260,7 +265,7 @@
                                           <Insets top="4.0" />
                                        </padding>
                                     </Label>
-                                    <TextField fx:id="txtFieldNomHomothetie" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="85.0" />
+                                    <TextField fx:id="txtFieldNomHomothetie" minHeight="0.0" minWidth="0.0" prefHeight="26.0" prefWidth="120.0" />
                                  </children>
                               </HBox>
                               <Label text="Centre :">
