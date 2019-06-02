@@ -40,12 +40,12 @@
                      </graphic>
                   </Button>
                   <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnMoins" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#btnMoinsPressed" prefHeight="30.0" prefWidth="30.0" text="-">
+                  <Button fx:id="btnMoins" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#btnMoinsPressed" prefHeight="30.0" prefWidth="35.0" text="-">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnPlus" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#ptnPlusPressed" prefHeight="30.0" prefWidth="30.0" text="+">
+                  <Button fx:id="btnPlus" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#ptnPlusPressed" prefHeight="30.0" prefWidth="35.0" text="+">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
